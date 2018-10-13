@@ -3,21 +3,31 @@ $(document).ready(function () {
     // global variables 
     var rpgGame = {
         isGameStarted: false,
+        opponentsRem: 0,
         playerCharacter: {
             codeName: "",
             displayName: "", 
-            healthPts: 0, 
-            attackPts: {
+            healthPts: {
                 base: 0, 
                 current: 0
             },
-            counterAttackPts: 0, 
+            attackPts: { // 
+                base: 0, 
+                current: 0
+            },
             isDefeated: false, 
             attack: function () {
-                
-                // reduce the opponent character object's health value 
+                // check if the attack will defeat the opponent 
+                if (rpgGame.playerCharacter.attackPts.current >= rpgGame.opponentCharacter.healthPts.current) {
+                    // set the opponent health to 0
+                    rpgGame.opponentCharacter.healthPts.current = 0;
+                    //invoke characterDefeated 
+                }
+                // reduce the opponent character object's health value
+                rpgGame.opponentCharacter.healthPts -= rpgGame.playerCharacter.attackPts.current;
                 // invoke a counter attack on the playerCharacter (reduce playerChar health)
-                // invoke a "check" status function 
+                rpgGame.playerCharacter.healthPts.current -= rpgGame.opponentCharacter.counterAttackPts;
+                // invoke a "check status" function 
                 // to check health of opponent and character post-interaction
                 // take the current attack value, increase by base value
                 rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
@@ -25,7 +35,16 @@ $(document).ready(function () {
 
             }
         },
-        opponentCharacter: "", 
+        opponentCharacter: {
+            codeName: "", 
+            displayName: "", 
+            healthPts: {
+                base: 0, 
+                current: 0
+            }, 
+            counterAttackPts: 0, 
+            isDefeated: false
+            },
         characters: [
             {
                 codeName: "darthVader",
@@ -81,14 +100,17 @@ $(document).ready(function () {
             this.playerCharacter.healthPts = this.characters[i].healthPts;
             this.playerCharacter.attackPts.base = this.characters[i].attackPts;
             this.playerCharacter.counterAttackPts = this.characters[i].counterAttackPts;
-            
-            
-
-            
-            
         },
         selectOpponent: function (charCode) {
             this.opponentCharacter = charCode; 
+        },
+        charDefeated: function () {
+            // check if the character defeated is the last in contention 
+            if (this.opponentsRem > 1) {
+                // remove the opponent from the defender area 
+                // place game in a state where the user can select another opponent 
+                // invoke selectOpponent method 
+            }
         },
         startGame: function () {
             this.isGameStarted = true; 
