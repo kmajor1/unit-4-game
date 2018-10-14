@@ -3,6 +3,8 @@ $(document).ready(function () {
     // global variables 
     var rpgGame = {
         isGameStarted: false,
+        isPlayerCharacterSelected: false, 
+        isOpponentSelected: false, 
         opponentsRem: 0,
         playerCharacter: {
             codeName: "",
