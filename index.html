@@ -11,43 +11,88 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./assets/javascript/game.js"></script>
-    
+
 </head>
 
 <body>
-    <div class="container">
-        <div id="gameSpace" class="col-6">
+    <!-- main container -->
+    <div class="container m-4">
+        <!-- game space -->
+        <div id="gameSpace" class="col-8">
+            <!-- all characters for selection placed here -->
             <div id="allCharactersSpace" class="row">
-                <div class="characterUnselected col-3">Character 1</div>
-                <div class="characterUnselected col-3">Character 2</div>
-                <div class="characterUnselected col-3">Character 3</div>
-                <div class="characterUnselected col-3">Character 4</div>
+                <!-- grid of 4 items, 4 characters -->
+                <div class="col-3">
+                    <div class="characterHolder" id="darthVader">
+                        <div class="characterLabel">
+                            <p>Darth Vader</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/darth_vader.jpeg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="characterHolder" id="rey">
+                        <div class="characterLabel">
+                            <p>Rey</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/rey.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="characterHolder" id="obiwan">
+                        <div class="characterLabel">
+                            <p>Obi-Wan Kenobi</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/obiwan.png">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="characterHolder" id="han">
+                        <div class="characterLabel">
+                            <p>Han Solo</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/han_solo.png">
+                        </div>
+                    </div>
             </div>
+        </div>
+            <!-- the selected player character goes here -->
             <div id="selectedCharacterSpace" class="row">
                 <div id="yourCharacterSpace" class="col-12">
-                    yourCharacter 
+                    yourCharacter
                 </div>
             </div>
+            <!-- enemies for selection displayed here -->
             <div id="enemiesSpace" class="row">
                 <div class="col-3">Enemy 1</div>
                 <div class="col-3">Enemy 2</div>
                 <div class="col-3">Enemy 3</div>
                 <div class="col-3">Placeholder div</div>
             </div>
+            <!-- game controls -->
             <div id="gameControlsSpace" class="row">
                 <div id="attackControlSpace" class="col">
                     <button class="btn-success">Attack!</button>
                 </div>
             </div>
-            <div id="currentDefenderSpace" class="row">
-                <div id="currentDefenderDiv" class="col-12">
-                    Current Defender 
+            <!-- current opponent space -->
+            <div id="currentOpponentSpace" class="row">
+                <div id="currentOpponentDiv" class="col-12">
+                    Current Defender
                 </div>
             </div>
         </div>
     </div>
-    <div id="emptySpace" class="col-6">
-
+    <div id="emptySpace" class="col-4">
+        Put stuff here later 
     </div>
 
 

@@ -1,0 +1,27 @@
+.characterHolder  {
+    
+}
+
+.characterLabel p {
+    margin: 0; 
+    padding: 0px;  
+    text-align: center;
+    font-family: news 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.characterImgHolder {
+    /* margin: auto auto;  */
+    
+}
+
+.characterImgHolder img {
+    /* height: 155px;  */
+    /* width: 150px;  */
+    padding: 0px; 
+    border-radius: 5%; 
+    margin: 0;
+}
+
+
+
+
