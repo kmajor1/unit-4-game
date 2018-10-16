@@ -16,11 +16,11 @@
 
 <body>
     <!-- main container -->
-    <div class="container m-4">
+    <div class="container">
         <!-- game space -->
-        <div id="gameSpace" class="col-8">
+        <div id="gameSpace" class="m-0 col-8">
             <!-- all characters for selection placed here -->
-            <div id="allCharactersSpace" class="d-flex flex-nowrap row">
+            <div id="charactersInit" class="row d-flex flex-nowrap">
                 <!-- grid of 4 items, 4 characters -->
 
                 <div class="characterHolder mx-1" id="darthVader">
@@ -31,8 +31,6 @@
                         <img class="img-fluid" src="./assets/images/darth_vader.jpeg">
                     </div>
                 </div>
-
-
                 <div class="characterHolder mx-1" id="rey">
                     <div class="characterLabel">
                         <p>Rey</p>
@@ -41,8 +39,6 @@
                         <img class="img-fluid" src="./assets/images/rey.jpg">
                     </div>
                 </div>
-
-
                 <div class="characterHolder mx-1" id="obiwan">
                     <div class="characterLabel">
                         <p>Obi-Wan Kenobi</p>
@@ -51,9 +47,6 @@
                         <img class="img-fluid" src="./assets/images/obiwan.png">
                     </div>
                 </div>
-
-
-
                 <div class="characterHolder mx-1" id="han">
                     <div class="characterLabel">
                         <p>Han Solo</p>
@@ -62,50 +55,49 @@
                         <img class="img-fluid" src="./assets/images/han_solo.png">
                     </div>
                 </div>
-
             </div>
             <!-- the selected player character goes here -->
-            <div id="selectedCharacterSpace" class="row">
+            <div id="selectedCharacterSpace" class="row mx-0">
                 <div class="row">
-                    <div class="col-12">
-                        Player Title
+                    Your Player!!
+                </div>
+                <div id="yourCharacterSpace" class="row d-flex justify-content-start mx-0 flex-nowrap">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div id="enemiesSpace" class="row">
+                    <div class="col-3">Enemy 1</div>
+                    <div class="col-3">Enemy 2</div>
+                    <div class="col-3">Enemy 3</div>
+                    <div class="col-3">Placeholder div</div>
+                </div>
+                <!-- game controls -->
+                <div id="gameControlsSpace" class="row">
+                    <div id="attackControlSpace" class="col">
+                        <button class="btn-success">Attack!</button>
                     </div>
                 </div>
-            </div>
-            <div id="yourCharacterSpace" class="col-3">
+                <!-- current opponent space -->
+                <div id="currentOpponentSpace" class="row">
+                    <div class="col-12">
+                        Current Defender
+                    </div>
+                    <div class="row">
+                        <div id="currentOpponentBox" class="col-3">
+        
+                        </div>
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
 
-            </div>
-            <div class="col-3"></div>
-            <div class="col-3"></div>
-            <div class="col-3"></div>
         </div>
         <!-- enemies for selection displayed here -->
-        <div id="enemiesSpace" class="row">
-            <div class="col-3">Enemy 1</div>
-            <div class="col-3">Enemy 2</div>
-            <div class="col-3">Enemy 3</div>
-            <div class="col-3">Placeholder div</div>
-        </div>
-        <!-- game controls -->
-        <div id="gameControlsSpace" class="row">
-            <div id="attackControlSpace" class="col">
-                <button class="btn-success">Attack!</button>
-            </div>
-        </div>
-        <!-- current opponent space -->
-        <div id="currentOpponentSpace" class="row">
-            <div class="col-12">
-                Current Defender
-            </div>
-            <div class="row">
-                <div id="currentOpponentBox" class="col-3">
-
-                </div>
-                <div class="col-3"></div>
-                <div class="col-3"></div>
-                <div class="col-3"></div>
-            </div>
-        </div>
+        
     </div>
     </div>
     <div id="emptySpace" class="col-4">
