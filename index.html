@@ -20,51 +20,84 @@
         <!-- game space -->
         <div id="gameSpace" class="m-0 col-8">
             <!-- all characters for selection placed here -->
-            <div id="charactersInit" class="row d-flex flex-nowrap">
+            <div id="charactersInit" class="row mb-3">
                 <!-- grid of 4 items, 4 characters -->
-
-                <div class="characterHolder mx-1" id="darthVader">
-                    <div class="characterLabel">
-                        <p>Darth Vader</p>
+                <div class="card-deck">
+                    <div class="card characterHolder" id="darthVader">
+                        <div class="card-header characterLabel">
+                                <p>Darth Vader</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/darth_vader.jpeg">
+                        </div>
+                        <div class="card-footer">
+                            Put stats here 
+                        </div>
                     </div>
-                    <div class="characterImgHolder">
-                        <img class="img-fluid" src="./assets/images/darth_vader.jpeg">
+                    <div class="card characterHolder" id="rey">
+                        <div class="card-header characterLabel">
+                            <p>Rey</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/rey.jpg">
+                        </div>
+                        <div class="card-footer">
+                            Put stats here 
+                        </div>
                     </div>
-                </div>
-                <div class="characterHolder mx-1" id="rey">
-                    <div class="characterLabel">
-                        <p>Rey</p>
+                    <div class="card characterHolder" id="obiwan">
+                        <div class="card-header characterLabel">
+                            <p>Obi-Wan</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/obiwan.png">
+                        </div>
+                        <div class="card-footer">
+                            Put stats here 
+                        </div>
                     </div>
-                    <div class="characterImgHolder">
-                        <img class="img-fluid" src="./assets/images/rey.jpg">
-                    </div>
-                </div>
-                <div class="characterHolder mx-1" id="obiwan">
-                    <div class="characterLabel">
-                        <p>Obi-Wan Kenobi</p>
-                    </div>
-                    <div class="characterImgHolder">
-                        <img class="img-fluid" src="./assets/images/obiwan.png">
-                    </div>
-                </div>
-                <div class="characterHolder mx-1" id="han">
-                    <div class="characterLabel">
-                        <p>Han Solo</p>
-                    </div>
-                    <div class="characterImgHolder">
-                        <img class="img-fluid" src="./assets/images/han_solo.png">
+                    <div class="card characterHolder" id="han">
+                        <div class="card-header characterLabel">
+                            <p>Han Solo</p>
+                        </div>
+                        <div class="characterImgHolder">
+                            <img class="img-fluid" src="./assets/images/han_solo.png">
+                        </div>
+                        <div class="card-footer">
+                            Put stats here 
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- the selected player character goes here -->
-            <div id="selectedCharacterSpace" class="row mx-0">
+            <div id="selectedCharactersSpace" class="row w-100 mx-0">
                 <div class="row">
-                    Your Player!!
-                </div>
-                <div id="yourCharacterSpace" class="row d-flex justify-content-start mx-0 flex-nowrap">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="card-deck">
+                        <div class="card text-left flex-fill">
+                            <div class="card-header">Player</div>
+                            <img class="playerIMG card-img-top" src="https://via.placeholder.com/150X150/">
+                            <div class="card-body">
+                            </div>
+                            <div class="card-footer">
+                                Progress Bar
+                            </div>
+                        </div>
+                        
+                            <div class="card flex-fill">
+                                <div id="vsHolder" class="card-body">
+                                    <h2 id="vsLabel">VS</h2>
+                                </div>
+                            </div>
+                        <div class="card text-left flex-fill">
+                            <div class="card-header">Computer</div>
+                            <img class="opponentIMG card-img-top" src="https://via.placeholder.com/150X150/">
+                            <div class="card-body">
+                            </div>
+                            <div class="card-footer">
+                                Progress Bar 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

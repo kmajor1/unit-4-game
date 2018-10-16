@@ -21,8 +21,17 @@ div {
     /* height: 155px;  */
     /* width: 150px;  */
     padding: 0px; 
-    border-radius: 5%; 
     margin: 0;
+}
+
+#vsLabel {
+    
+    position: relative; 
+    top: 100%;
+}
+
+#vsHolder {
+    margin: 0 auto; 
 }
 
 
