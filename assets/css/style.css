@@ -1,6 +1,10 @@
 div {
     /* border: 1px solid black;  */
 }
+
+.metric {
+    margin-left: 50%;
+}
 .characterHolder  {
     
 }
@@ -9,7 +13,7 @@ div {
     margin: 0; 
     padding: 0px;  
     text-align: center;
-    font-family: news 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .characterImgHolder {
@@ -24,15 +28,25 @@ div {
     margin: 0;
 }
 
+.card-stats { 
+    text-align: left;
+}
+
 #vsLabel {
     
     position: relative; 
     top: 100%;
 }
 
-#vsHolder {
+#vsCard {
+    border-width: 0; 
+}
+
+#vsBody {
     margin: 0 auto; 
 }
+
+
 
 
 

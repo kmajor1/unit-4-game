@@ -1,4 +1,4 @@
-<!doctype <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,63 +18,99 @@
     <!-- main container -->
     <div class="container">
         <!-- game space -->
-        <div id="gameSpace" class="m-0 col-8">
+        <div id="gameSpace" class="m-0 col-12">
             <!-- all characters for selection placed here -->
-            <div id="charactersInit" class="row mb-3">
+            <div id="charactersInit" class="row mb-3 justify-content-center">
                 <!-- grid of 4 items, 4 characters -->
                 <div class="card-deck">
                     <div class="card characterHolder" id="darthVader">
                         <div class="card-header characterLabel">
-                                <p>Darth Vader</p>
+                            <p>Darth Vader</p>
                         </div>
-                        <div class="characterImgHolder">
-                            <img class="img-fluid" src="./assets/images/darth_vader.jpeg">
-                        </div>
-                        <div class="card-footer">
-                            Put stats here 
+                        <img class="card-img-top img-fluid" src="./assets/images/darth_vader.jpeg">
+                        <ul class="list-group list-group-flush d-flex">
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="healthMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="attackMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="counterAttackMetric"></span></li>
+                            </small>
+                        </ul>
+                        <div class="card-footer card-stats p-1">
+                            <p>Char Status</p>
                         </div>
                     </div>
                     <div class="card characterHolder" id="rey">
                         <div class="card-header characterLabel">
                             <p>Rey</p>
                         </div>
-                        <div class="characterImgHolder">
-                            <img class="img-fluid" src="./assets/images/rey.jpg">
-                        </div>
-                        <div class="card-footer">
-                            Put stats here 
+                        <img class="card-img-top img-fluid" src="./assets/images/rey.jpg">
+                        <ul class="list-group list-group-flush d-flex">
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="healthMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="attackMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="counterAttackMetric"></span></li>
+                            </small>
+                        </ul>
+                        <div class="charStatus card-footer p-1">
+                            <p>Char Status</p>
                         </div>
                     </div>
                     <div class="card characterHolder" id="obiwan">
                         <div class="card-header characterLabel">
                             <p>Obi-Wan</p>
                         </div>
-                        <div class="characterImgHolder">
-                            <img class="img-fluid" src="./assets/images/obiwan.png">
-                        </div>
-                        <div class="card-footer">
-                            Put stats here 
+                        <img class="card-img-top img-fluid" src="./assets/images/obiwan.png">
+                        <ul class="list-group list-group-flush d-flex">
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="healthMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="attackMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>text</span><div class="flex-grow-1"></div><span class="counterAttackMetric"></span></li>
+                            </small>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <p>Char Status</p>
                         </div>
                     </div>
                     <div class="card characterHolder" id="han">
                         <div class="card-header characterLabel">
                             <p>Han Solo</p>
                         </div>
-                        <div class="characterImgHolder">
-                            <img class="img-fluid" src="./assets/images/han_solo.png">
-                        </div>
-                        <div class="card-footer">
-                            Put stats here 
+                        <img class="card-img-top img-fluid" src="./assets/images/han_solo.png">
+                        <ul class="list-group list-group-flush d-flex">
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>Health:</span><div class="flex-grow-1"></div><span class="healthMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>Attack:</span><div class="flex-grow-1"></div><span class="attackMetric">0</span></li>
+                            </small>
+                            <small>
+                                <li class="list-group-item p-2 d-flex"><span>Counter-Attack:</span><div class="flex-grow-1"></div><span class="counterAttackMetric"></span></li>
+                            </small>
+                        </ul>
+                        <div class="card-footer p-1">
+                           <p>Char Status</p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- the selected player character goes here -->
-            <div id="selectedCharactersSpace" class="row w-100 mx-0">
-                <div class="row">
+            <div id="selectedCharactersSpace" class="row mx-0">
+                <div class="col-12">
                     <div class="card-deck">
                         <div class="card text-left flex-fill">
-                            <div class="card-header">Player</div>
+                            <div id="playerLabel" class="card-header">Player</div>
                             <img class="playerIMG card-img-top" src="https://via.placeholder.com/150X150/">
                             <div class="card-body">
                             </div>
@@ -82,55 +118,60 @@
                                 Progress Bar
                             </div>
                         </div>
-                        
-                            <div class="card flex-fill">
-                                <div id="vsHolder" class="card-body">
-                                    <h2 id="vsLabel">VS</h2>
-                                </div>
+
+                        <div id="vsCard" class="card flex-fill">
+                            <div id="vsBody" class="card-body">
+                                <h2 class="text-center" id="vsLabel">VS
+                                    <br><br>
+                                    <button class="btn-success">Attack!</button>
+                                </h2>
+
                             </div>
+                        </div>
                         <div class="card text-left flex-fill">
-                            <div class="card-header">Computer</div>
+                            <div id="opponentLabel" class="card-header">Computer</div>
                             <img class="opponentIMG card-img-top" src="https://via.placeholder.com/150X150/">
                             <div class="card-body">
                             </div>
                             <div class="card-footer">
-                                Progress Bar 
+                                Progress Bar
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="enemiesSpace" class="row">
-                    <div class="col-3">Enemy 1</div>
-                    <div class="col-3">Enemy 2</div>
-                    <div class="col-3">Enemy 3</div>
-                    <div class="col-3">Placeholder div</div>
-                </div>
-                <!-- game controls -->
-                <div id="gameControlsSpace" class="row">
-                    <div id="attackControlSpace" class="col">
-                        <button class="btn-success">Attack!</button>
-                    </div>
-                </div>
-                <!-- current opponent space -->
-                <div id="currentOpponentSpace" class="row">
-                    <div class="col-12">
-                        Current Defender
-                    </div>
-                    <div class="row">
-                        <div id="currentOpponentBox" class="col-3">
-        
-                        </div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
-                    </div>
-                </div>
-
         </div>
-        <!-- enemies for selection displayed here -->
-        
+
+        <div id="enemiesSpace" class="row">
+            <div class="col-3">Enemy 1</div>
+            <div class="col-3">Enemy 2</div>
+            <div class="col-3">Enemy 3</div>
+            <div class="col-3">Placeholder div</div>
+        </div>
+        <!-- game controls -->
+        <div id="gameControlsSpace" class="row">
+            <div id="attackControlSpace" class="col">
+
+            </div>
+        </div>
+        <!-- current opponent space -->
+        <div id="currentOpponentSpace" class="row">
+            <div class="col-12">
+                Current Defender
+            </div>
+            <div class="row">
+                <div id="currentOpponentBox" class="col-3">
+
+                </div>
+                <div class="col-3"></div>
+                <div class="col-3"></div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- enemies for selection displayed here -->
+
     </div>
     </div>
     <div id="emptySpace" class="col-4">
