@@ -14,6 +14,12 @@ $(document).ready(function () {
     var reyBox = $("#rey");
     var hanSoloBox = $("#han");
 
+    // load attack button 
+
+   
+   
+    
+
     // load the player and opponent images into their own containers 
     var playerImg = $(".playerIMG"); 
     var opponentImg = $(".opponentIMG");
@@ -23,12 +29,6 @@ $(document).ready(function () {
     var playerLabel = $("#playerLabel");
     var opponentLabel = $("#opponentLabel");
 
-    var displayPlayerStats = function () {
-        // check if game started, if not, just show static metrics 
-        if (!rpgGame.isGameStarted) {
-            // 
-        }
-    }
 
 
     var rpgGame = {
@@ -254,17 +254,20 @@ $(document).ready(function () {
             // are both player and character selected? 
             if (rpgGame.isPlayerCharacterSelected && rpgGame.isOpponentSelected) {
                 this.isGameStarted = true; 
-                $("#charactersInit").fadeOut("slow", function () {
-                    var battleLabelDiv = $("<div>");
-                    console.log(battleLabelDiv);
-                    battleLabelDiv.html("<h1>Battle Time</h1>");
-                    console.log(battleLabelDiv);
-                    $("#charactersInit").append(battleLabelDiv); 
-                    console.log($("#charactersInit"));
+                // TODO: Fix this if there's time 
+                // $("#charactersInit").fadeOut("slow", function () {
+                //     var battleLabelDiv = $("<div>");
+                //     console.log(battleLabelDiv);
+                //     battleLabelDiv.html("<h1>Battle Time</h1>");
+                //     console.log(battleLabelDiv);
+                //     $("#charactersInit").append(battleLabelDiv); 
+                //     console.log($("#charactersInit"));
 
-                });
-                $("#charactersInit").css("display", "block");
+                // });
+                // $("#charactersInit").css("display", "block");
                 // $("#charactersInit").addClass("d-none");
+
+                
                 
                 
             }
@@ -279,6 +282,33 @@ $(document).ready(function () {
     // debug stuff
     console.log("Game Object");
     console.log(rpgGame);
+
+    // load page details 
+    // load character card stat metric text 
+    console.log(rpgGame.characters[0].healthPts);
+    // darth vader stats 
+    $("#darthVaderHealthPts").text(rpgGame.characters[0].healthPts);
+    $("#darthVaderAttackPts").text(rpgGame.characters[0].attackPts);
+    $("#darthVaderCounterAttackPts").text(rpgGame.characters[0].counterAttackPts);
+
+    // obi wan stats
+    $("#obiWanHealthPts").text(rpgGame.characters[1].healthPts);
+    $("#obiWanAttackPts").text(rpgGame.characters[1].attackPts);
+    $("#obiWanCounterAttackPts").text(rpgGame.characters[1].counterAttackPts);
+
+    // rey stats
+    $("#reyHealthPts").text(rpgGame.characters[2].healthPts);
+    $("#reyAttackPts").text(rpgGame.characters[2].attackPts);
+    $("#reyCounterAttackPts").text(rpgGame.characters[2].counterAttackPts);
+
+    // han solo stats 
+    $("#hanHealthPts").text(rpgGame.characters[3].healthPts);
+    $("#hanAttackPts").text(rpgGame.characters[3].attackPts);
+    $("#hanCounterAttackPts").text(rpgGame.characters[3].counterAttackPts);
+    console.log("attackptsHna");
+    console.log(rpgGame.characters[3].counterAttackPts);
+
+
     
 
     
