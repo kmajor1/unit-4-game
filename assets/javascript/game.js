@@ -254,6 +254,19 @@ $(document).ready(function () {
             // are both player and character selected? 
             if (rpgGame.isPlayerCharacterSelected && rpgGame.isOpponentSelected) {
                 this.isGameStarted = true; 
+                $("#charactersInit").fadeOut("slow", function () {
+                    var battleLabelDiv = $("<div>");
+                    console.log(battleLabelDiv);
+                    battleLabelDiv.html("<h1>Battle Time</h1>");
+                    console.log(battleLabelDiv);
+                    $("#charactersInit").append(battleLabelDiv); 
+                    console.log($("#charactersInit"));
+
+                });
+                $("#charactersInit").css("display", "block");
+                // $("#charactersInit").addClass("d-none");
+                
+                
             }
             
             // clear all appropriate screen areas 
@@ -316,7 +329,7 @@ $(document).ready(function () {
                 // invoke select opponent 
                 rpgGame.selectOpponent("obiWan");
                 // set the game ready to start 
-                rpgGame.isGameStarted = true; 
+                rpgGame.startGame(); 
             }
         }
     })
@@ -338,7 +351,7 @@ $(document).ready(function () {
                 // invoke select opponent 
                 rpgGame.selectOpponent("rey");
                 // set the game ready to start 
-                rpgGame.isGameStarted = true; 
+                rpgGame.startGame(); 
             }
         }
     })
@@ -361,7 +374,7 @@ $(document).ready(function () {
                 // invoke select opponent 
                 rpgGame.selectOpponent("han");
                 // set the game ready to start 
-                rpgGame.isGameStarted = true; 
+                rpgGame.startGame();  
             }
         }
     })
