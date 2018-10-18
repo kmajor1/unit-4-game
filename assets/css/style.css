@@ -1,4 +1,6 @@
-
+.progress-bar {
+    width: 100%; 
+}
 
 .metric {
     margin-left: 50%;

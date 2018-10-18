@@ -46,8 +46,10 @@ $(document).ready(function () {
             },
             isDefeated: false, 
             attack: function () {
+                
                 // check if the attack will defeat the opponent 
                 if (rpgGame.playerCharacter.attackPts.current >= rpgGame.opponentCharacter.healthPts.current) {
+                    console.log("running defeat opponent block");
                     // set the opponent health to 0
                     rpgGame.opponentCharacter.healthPts.current = 0;
                     //invoke characterDefeated 
@@ -55,16 +57,31 @@ $(document).ready(function () {
                 }
                 else {
                     // reduce the opponent character object's health value
-                    rpgGame.opponentCharacter.healthPts -= rpgGame.playerCharacter.attackPts.current;
+                    console.log("Running normal attack");
+                    console.log("current opp  health b4 attack");
+                    
+                    console.log(rpgGame.opponentCharacter.healthPts.current);
+                    console.log("player har attack pts right now");
+                    console.log(rpgGame.playerCharacter.attackPts.current);
+                    rpgGame.opponentCharacter.healthPts.current -= rpgGame.playerCharacter.attackPts.current;
+                    console.log("after attack");
+                    console.log(rpgGame.opponentCharacter.healthPts.current);
+                    // calculate progress bar value 
+                    var opponentProgress = (rpgGame.opponentCharacter.healthPts.current/rpgGame.opponentCharacter.healthPts.base)*100;
+                    console.log("opp progress");
+                    console.log(opponentProgress);
+                    $("#opponentHealthBar").text(opponentProgress);
                     // invoke a counter attack on the playerCharacter (reduce playerChar health)
                     // check whether this will defeat the player 
                     if (rpgGame.opponentCharacter.counterAttackPts >= rpgGame.playerCharacter.healthPts.current) {
                         // set player character health to 0 
+                        console.log("running defeat player block");
                         rpgGame.playerCharacter.healthPts.current = 0;
                         // invoke charDefeated routine 
                         rpgGame.charDefeated("p"); 
                     }
                     else {
+                        console.log("running player keeps going after counterattack");
                         rpgGame.playerCharacter.healthPts.current -= rpgGame.opponentCharacter.counterAttackPts;
                         // take the current attack value, increase by base value
                         rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
@@ -119,6 +136,8 @@ $(document).ready(function () {
         ],
         // select character function 
         selectCharacter: function (charCode) {
+            console.log("this for select char")
+            console.log(this);
             var i = 0; // setting initial index of the character in rpgGame object 
             // determine the player selected, set index value 
             // cannot select same player and opponent 
@@ -156,6 +175,7 @@ $(document).ready(function () {
                 this.playerCharacter.healthPts.base = this.characters[i].healthPts;
                 this.playerCharacter.healthPts.current = this.playerCharacter.healthPts; 
                 this.playerCharacter.attackPts.base = this.characters[i].attackPts;
+                this.playerCharacter.attackPts.current = this.characters[i].attackPts;
                 this.playerCharacter.counterAttackPts = this.characters[i].counterAttackPts;
     
                 console.log(this.playerCharacter);
@@ -410,10 +430,11 @@ $(document).ready(function () {
     attackBtn.on("click", function () {
         
         if (rpgGame.isGameStarted) {
-            alert('we can play!');
+            
+            rpgGame.playerCharacter.attack();
         }
         else {
-            alert("can't play yet");
+            
         }
     })
 
