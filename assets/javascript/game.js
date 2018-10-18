@@ -15,10 +15,7 @@ $(document).ready(function () {
     var hanSoloBox = $("#han");
 
     // load attack button 
-
-   
-   
-    
+    var attackBtn = $("#attackBtn");
 
     // load the player and opponent images into their own containers 
     var playerImg = $(".playerIMG"); 
@@ -406,6 +403,17 @@ $(document).ready(function () {
                 // set the game ready to start 
                 rpgGame.startGame();  
             }
+        }
+    })
+
+    // attack button onClick
+    attackBtn.on("click", function () {
+        
+        if (rpgGame.isGameStarted) {
+            alert('we can play!');
+        }
+        else {
+            alert("can't play yet");
         }
     })
 
