@@ -295,6 +295,7 @@ $(document).ready(function () {
             if (rpgGame.isPlayerCharacterSelected && rpgGame.isOpponentSelected) {
                 this.isGameStarted = true; 
                 this.opponentsRem = 2; 
+                $("#charactersInit").addClass("d-none");
                 // TODO: Fix this if there's time 
                 // $("#charactersInit").fadeOut("slow", function () {
                 //     var battleLabelDiv = $("<div>");
@@ -349,14 +350,7 @@ $(document).ready(function () {
     console.log("attackptsHna");
     console.log(rpgGame.characters[3].counterAttackPts);
 
-
-    
-
-    
-    // log those containers 
-    
-
-    // assign click events to each 
+    // CHARACTER SELECTION BOX ON-CLICK EVENTS 
     // darthVader on click 
     darthVaderBox.on("click", function (event) {
         // if the game has started, clicking a character does nothing 
