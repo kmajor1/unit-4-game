@@ -39,8 +39,8 @@ $(document).ready(function () {
     console.log(playerImg);
 
     // load player and opponent labels 
-    var playerLabel = $("#playerLabel");
-    var opponentLabel = $("#opponentLabel");
+    var playerLabel = $("#playerLabel h3");
+    var opponentLabel = $("#opponentLabel h3");
 
 
 
@@ -339,7 +339,8 @@ $(document).ready(function () {
                     // set isGameStarted to false 
                     this.isGameStarted = false;
                     // Change the header to show the game has been won!
-                    $(".header span").text("You have mastered The Force!");
+                    $("#headerTitle").text("Well done, young Padawan!");
+                    $("#headerMsg").text("You have mastered The Force!");
                     // hide selected characters space 
                     $("#selectedCharactersSpace").addClass("d-none");
                     // display the character init space for only the player character 
@@ -348,7 +349,8 @@ $(document).ready(function () {
                     console.log("SELECTOR TEMP:");
                     console.log(selectorTemp);
                     $(selectorTemp).removeClass("d-none");
-                    $(selectorTemp).addClass("wide");
+                    $(selectorTemp).removeClass("characterHolderSelected");
+                    $(selectorTemp).addClass("winner");
                     // invoke a reset button for the user 
                 }
             }
@@ -412,7 +414,7 @@ $(document).ready(function () {
     $("#headerTitle").text("Let's Play!");
     $("#headerMsg").text("Choose your character!"); 
     var alertMsg = $(".alert"); 
-    
+
 
     // load character card stat metric text 
     console.log(rpgGame.characters[0].healthPts);

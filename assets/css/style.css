@@ -1,13 +1,30 @@
+body {
+    background-color: black; 
+    opacity: 1; 
+    background-image: url(../images/death_star.jpeg);
+    background-repeat: no-repeat;
+}
+
 h1 {
     padding: 10px; 
 }
+
+#vsCard {
+    background-color:rgba(255,0,0,0);
+}
+
+ h2 {
+     color: white; 
+  
+}
+
 
 .card-stats p {
     text-align: center; 
 }
 
-.wide {
-    width: 300px;
+.winner {
+    opacity: 1;
 }
 
 .spacer {
@@ -16,13 +33,13 @@ h1 {
 
 .characterHolder:hover {
     border-style: dashed; 
-    border-color: teal; 
-    border-width: 2px; 
+    border-color: yellow; 
+    border-width: 3px; 
     
 }
 
 .characterHolderDefeated {
-    opacity: .75;
+    opacity: .50;
 }
 
 .characterHolderSelected {
