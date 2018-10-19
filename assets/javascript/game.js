@@ -52,6 +52,7 @@ $(document).ready(function () {
                     console.log("running defeat opponent block");
                     // set the opponent health to 0
                     rpgGame.opponentCharacter.healthPts.current = 0;
+                    rpgGame.updateProgress();
                     //invoke characterDefeated 
                     rpgGame.charDefeated("e"); 
                 }
@@ -59,7 +60,8 @@ $(document).ready(function () {
                     // reduce the opponent character object's health value
                     console.log("Running normal attack");
                     console.log("current opp  health b4 attack");
-                    
+                    console.log("player char health pts");
+                    console.log(rpgGame.playerCharacter.healthPts.current);
                     console.log(rpgGame.opponentCharacter.healthPts.current);
                     console.log("player har attack pts right now");
                     console.log(rpgGame.playerCharacter.attackPts.current);
@@ -67,24 +69,33 @@ $(document).ready(function () {
                     console.log("after attack");
                     console.log(rpgGame.opponentCharacter.healthPts.current);
                     // calculate progress bar value 
-                    var opponentProgress = (rpgGame.opponentCharacter.healthPts.current/rpgGame.opponentCharacter.healthPts.base)*100;
+                    rpgGame.updateProgress();
+                    // var opponentProgress = (rpgGame.opponentCharacter.healthPts.current/rpgGame.opponentCharacter.healthPts.base)*100;
+                    // var playerProgress = (rpgGame.playerCharacter.healthPts.current/rpgGame.playerCharacter.healthPts.base)*100;
                     console.log("opp progress");
-                    console.log(opponentProgress);
-                    $("#opponentHealthBar").text(opponentProgress);
+                    // console.log(opponentProgress);
+                    // $("#opponentHealthBar").text(opponentProgress);
+                    
                     // invoke a counter attack on the playerCharacter (reduce playerChar health)
+                    
                     // check whether this will defeat the player 
-                    if (rpgGame.opponentCharacter.counterAttackPts >= rpgGame.playerCharacter.healthPts.current) {
-                        // set player character health to 0 
-                        console.log("running defeat player block");
-                        rpgGame.playerCharacter.healthPts.current = 0;
-                        // invoke charDefeated routine 
-                        rpgGame.charDefeated("p"); 
-                    }
-                    else {
-                        console.log("running player keeps going after counterattack");
-                        rpgGame.playerCharacter.healthPts.current -= rpgGame.opponentCharacter.counterAttackPts;
-                        // take the current attack value, increase by base value
-                        rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
+                        if (rpgGame.opponentCharacter.counterAttackPts >= rpgGame.playerCharacter.healthPts.current) {
+                            // set player character health to 0 
+                            console.log("running defeat player block");
+                            rpgGame.playerCharacter.healthPts.current = 0;
+                            // update the progress bar for the player character 
+                            // invoke charDefeated routine 
+                            rpgGame.charDefeated("p"); 
+                        }
+                        else {
+                            console.log("running player keeps going after counterattack");
+                            rpgGame.playerCharacter.healthPts.current -= rpgGame.opponentCharacter.counterAttackPts;
+                            // display result of this counter attack 
+                            // var playerProgress = (rpgGame.playerCharacter.healthPts.current/rpgGame.playerCharacter.healthPts.base)*100;
+                            // $("#playerHealthBar").text(playerProgress);
+                            rpgGame.updateProgress();
+                            // take the current attack value, increase by base value
+                            rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
                     }
                     
                 }
@@ -97,6 +108,7 @@ $(document).ready(function () {
                 base: 0, 
                 current: 0
             }, 
+            attackPts: 0, 
             counterAttackPts: 0, 
             isDefeated: false
             },
@@ -173,7 +185,7 @@ $(document).ready(function () {
                 this.playerCharacter.codeName = this.characters[i].codeName;
                 this.playerCharacter.displayName = this.characters[i].displayName;
                 this.playerCharacter.healthPts.base = this.characters[i].healthPts;
-                this.playerCharacter.healthPts.current = this.playerCharacter.healthPts; 
+                this.playerCharacter.healthPts.current = this.characters[i].healthPts; 
                 this.playerCharacter.attackPts.base = this.characters[i].attackPts;
                 this.playerCharacter.attackPts.current = this.characters[i].attackPts;
                 this.playerCharacter.counterAttackPts = this.characters[i].counterAttackPts;
@@ -221,11 +233,15 @@ $(document).ready(function () {
                     opponentLabel.text("Han Solo");
                 } 
                 // set the opponent character properties to selected opponent 
-                this.opponentCharacter.codeName = this.characters[i].codeName; 
+                console.log("this object");
+                console.log(this);
+                this.opponentCharacter.codeName = this.characters[i].codeName;
                 this.opponentCharacter.displayName = this.characters[i].displayName;
-                this.opponentCharacter.healthPts.base = this.characters[i].healthPts
-                this.opponentCharacter.healthPts.current = this.characters[i].healthPts;
+                this.opponentCharacter.healthPts.base = this.characters[i].healthPts;
+                this.opponentCharacter.healthPts.current = this.characters[i].healthPts; 
+                this.opponentCharacter.attackPts = this.characters[i].attackPts;
                 this.opponentCharacter.counterAttackPts = this.characters[i].counterAttackPts;
+                
                 console.log(this.opponentCharacter);
                 
                 // set game object state to player character selected 
@@ -246,8 +262,11 @@ $(document).ready(function () {
             else {
                 // check if there's more opponents to be played 
                 if (this.opponentsRem > 1) {
+                    console.log("running CharDefeated, opp rem > 1")
                     // remove the opponent from the defender area 
+                    $(".opponentIMG").attr("src", "https://via.placeholder.com/150X150/");
                     // place game in a state where the user can select another opponent 
+                    console.log(this);
                     this.isOpponentSelected = false; 
                     // invoke a message to the user that they've defeated the opponent 
                     // remove the opponent from the screen 
@@ -264,13 +283,18 @@ $(document).ready(function () {
             // check if the character defeated is the last in contention 
             
         },
-        updateScreenArea: function () {
+        updateProgress: function () {
+            var opponentProgress = (rpgGame.opponentCharacter.healthPts.current/rpgGame.opponentCharacter.healthPts.base)*100;
+            var playerProgress = (rpgGame.playerCharacter.healthPts.current/rpgGame.playerCharacter.healthPts.base)*100;
+            $("#opponentHealthBar").text(opponentProgress);
+            $("#playerHealthBar").text(playerProgress);
 
         },
         startGame: function () { //  
             // are both player and character selected? 
             if (rpgGame.isPlayerCharacterSelected && rpgGame.isOpponentSelected) {
                 this.isGameStarted = true; 
+                this.opponentsRem = 2; 
                 // TODO: Fix this if there's time 
                 // $("#charactersInit").fadeOut("slow", function () {
                 //     var battleLabelDiv = $("<div>");
