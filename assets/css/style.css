@@ -1,9 +1,52 @@
+h1 {
+    padding: 10px; 
+}
+
+.card-stats p {
+    text-align: center; 
+}
+
+.wide {
+    width: 300px;
+}
+
+.spacer {
+    margin-bottom: 50px; 
+}
+
+
+
+.characterHolder:hover {
+    border-style: dashed; 
+    border-color: teal; 
+    border-width: 2px; 
+    
+}
+
+.characterHolderDefeated {
+    opacity: .75;
+}
+
+.characterHolderSelected {
+    opacity: 0.75;
+}
+
+.header {
+    text-align: center; 
+    
+}
+
 .footer {
-    height: 50px; 
+    height: 10px; 
+}
+
+.progress {
+    height: 25px; 
 }
 
 .progress-bar {
     width: 100%; 
+    height: 25px; 
 }
 
 .metric {
