@@ -36,7 +36,6 @@ $(document).ready(function () {
     // load the player and opponent images into their own containers 
     var playerImg = $(".playerIMG");
     var opponentImg = $(".opponentIMG");
-    console.log(playerImg);
 
     // load player and opponent labels 
     var playerLabel = $("#playerLabel h3");
@@ -56,7 +55,7 @@ $(document).ready(function () {
                 base: 0,
                 current: 0
             },
-            attackPts: { // 
+            attackPts: { 
                 base: 0,
                 current: 0
             },
@@ -95,12 +94,9 @@ $(document).ready(function () {
                         console.log("running f: attack --> Counter attack WILL NOT defeat player character");
                         rpgGame.playerCharacter.healthPts.current -= rpgGame.opponentCharacter.counterAttackPts;
                         // display result of this counter attack 
-                        // var playerProgress = (rpgGame.playerCharacter.healthPts.current/rpgGame.playerCharacter.healthPts.base)*100;
-                        // $("#playerHealthBar").text(playerProgress);
-                        
                         // take the current attack value, increase by base value
                         rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
-                        rpgGame.updateProgress(); 
+                        rpgGame.updateProgress();
                     }
 
                 }
@@ -121,40 +117,38 @@ $(document).ready(function () {
             {
                 codeName: "darthVader",
                 displayName: "Darth Vader",
-                healthPts: 125,
+                healthPts: 225,
                 attackPts: 25,
-                counterAttackPts: 25,
+                counterAttackPts: 75,
                 isDefeated: false
             },
             {
                 codeName: "obiWan",
                 displayName: "Obi-Wan Kenobi",
-                healthPts: 200,
-                attackPts: 25,
-                counterAttackPts: 35,
+                healthPts: 280,
+                attackPts: 35,
+                counterAttackPts: 50,
                 isDefeated: false
             },
             {
                 codeName: "rey",
                 displayName: "Rey",
-                healthPts: 100,
-                attackPts: 35,
-                counterAttackPts: 30,
+                healthPts: 220,
+                attackPts: 30,
+                counterAttackPts: 80,
                 isDefeated: false
             },
             {
                 codeName: "han",
                 displayName: "Han Solo",
-                healthPts: 130,
-                attackPts: 15,
-                counterAttackPts: 25,
+                healthPts: 325,
+                attackPts: 40,
+                counterAttackPts: 20,
                 isDefeated: false
             }
         ],
         // select character function 
         selectCharacter: function (charCode) {
-            console.log("this for select char")
-            console.log(this);
             var i = 0; // setting initial index of the character in rpgGame object 
             // determine the player selected, set index value 
             // cannot select same player and opponent 
@@ -219,8 +213,6 @@ $(document).ready(function () {
 
                 // set game object state to player character selected 
                 this.isPlayerCharacterSelected = true;
-                console.log("isPlayerCharacterSelected");
-                console.log(this.isPlayerCharacterSelected);
             }
 
 
@@ -312,24 +304,30 @@ $(document).ready(function () {
                     rpgGame.characters[2].isDefeated = true;
                 }
                 else {
-                    rpgGame.characters[3].isDefeated = true; 
+                    rpgGame.characters[3].isDefeated = true;
                 }
                 // check if there's more opponents to be played 
                 if (this.opponentsRem > 1) {
                     // reduce opponents remaining by 1 
                     this.opponentsRem -= 1;
-                    console.log("opponents remaining" + this.opponentsRem);
-                    console.log("running CharDefeated, opp rem > 1")
-
                     // place game in a state where the user can select another opponent 
-                    console.log(this);
+                    // refresh the current player stats on the select screen
+                    var refreshPlayerCard = getCharacterCard(rpgGame.playerCharacter.codeName);
+                    refreshPlayerCard.find(".healthMetric").text(rpgGame.playerCharacter.healthPts.current);
+                    refreshPlayerCard.find(".healthMetric").css("color", "red");
+                    refreshPlayerCard.find(".healthMetric").css("font-weight", "bold");
+                    refreshPlayerCard.find(".healthMetric").css("font-size", "12pt");
+                    refreshPlayerCard.find(".attackMetric").text(rpgGame.playerCharacter.attackPts.current);
+                    refreshPlayerCard.find(".attackMetric").css("color", "green");
+                    refreshPlayerCard.find(".attackMetric").css("font-weight", "bold");
+                    refreshPlayerCard.find(".attackMetric").css("font-size", "12pt");
                     this.isOpponentSelected = false;
                     rpgGame.updateProgress();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $("#charactersInit").removeClass("d-none");
                         $("#selectedCharactersSpace").addClass("d-none");
                         // invoke a message to the user that they've defeated the opponent 
-                        
+
                         $("#headerTitle").text("GO AGAIN!");
                         $("#headerMsg").text("Select Another Opponent")
                     }, 2000)
@@ -341,13 +339,14 @@ $(document).ready(function () {
                     // Change the header to show the game has been won!
                     $("#headerTitle").text("Well done, young Padawan!");
                     $("#headerMsg").text("You have mastered The Force!");
+                    $("#resetFull").append(resetBtn);
+                    $("#resetBtn").removeClass("d-none");
+
                     // hide selected characters space 
                     $("#selectedCharactersSpace").addClass("d-none");
                     // display the character init space for only the player character 
                     $("#charactersInit").removeClass("d-none");
                     var selectorTemp = getCharacterCard(rpgGame.playerCharacter.codeName);
-                    console.log("SELECTOR TEMP:");
-                    console.log(selectorTemp);
                     $(selectorTemp).removeClass("d-none");
                     $(selectorTemp).removeClass("characterHolderSelected");
                     $(selectorTemp).addClass("winner");
@@ -367,10 +366,8 @@ $(document).ready(function () {
             // set the opponent progress value to a string that can be passed to CSS 
             var opponentProgressPctStr = opponentProgress + "%";
             var playerProgressPctStr = playerProgress + "%";
-            var playerProgressRatio = "("+rpgGame.playerCharacter.healthPts.current+"/"+rpgGame.playerCharacter.healthPts.base+")";
-            var opponentProgressRatio = "("+rpgGame.opponentCharacter.healthPts.current+"/"+rpgGame.opponentCharacter.healthPts.base+")";
-            console.log("is it a string?");
-            console.log(typeof opponentProgressPctStr);
+            var playerProgressRatio = "(" + rpgGame.playerCharacter.healthPts.current + "/" + rpgGame.playerCharacter.healthPts.base + ")";
+            var opponentProgressRatio = "(" + rpgGame.opponentCharacter.healthPts.current + "/" + rpgGame.opponentCharacter.healthPts.base + ")";
             $("#opponentHealthBar").text(opponentProgressRatio);
             $("#opponentHealthBar").css("width", opponentProgressPctStr);
             $("#playerHealthBar").text(playerProgressRatio);
@@ -390,34 +387,29 @@ $(document).ready(function () {
                 rpgGame.updateProgress();
             }
             else {
-                return 0; 
+                return 0;
             }
 
             // clear all appropriate screen areas 
         },
         resetGame: function () { // reset function??? 
             // just reload the page, way easier. 
-            location.reload(); 
+            location.reload();
 
-            
-            
+
+
         }
     }
-
-    // debug stuff
-    console.log("Game Object");
-    console.log(rpgGame);
 
     // load page details 
 
     // load header message for page load 
     $("#headerTitle").text("Let's Play!");
-    $("#headerMsg").text("Choose your character!"); 
-    var alertMsg = $(".alert"); 
+    $("#headerMsg").text("Choose your character!");
+    var alertMsg = $(".alert");
 
 
     // load character card stat metric text 
-    console.log(rpgGame.characters[0].healthPts);
     // darth vader stats 
     $("#darthVaderHealthPts").text(rpgGame.characters[0].healthPts);
     $("#darthVaderAttackPts").text(rpgGame.characters[0].attackPts);
@@ -437,15 +429,14 @@ $(document).ready(function () {
     $("#hanHealthPts").text(rpgGame.characters[3].healthPts);
     $("#hanAttackPts").text(rpgGame.characters[3].attackPts);
     $("#hanCounterAttackPts").text(rpgGame.characters[3].counterAttackPts);
-    console.log("attackptsHna");
-    console.log(rpgGame.characters[3].counterAttackPts);
 
     // CHARACTER SELECTION BOX ON-CLICK EVENTS 
     // darthVader on click 
     darthVaderBox.on("click", function (event) {
         // if the game has started, clicking a character does nothing 
         if (rpgGame.isGameStarted || rpgGame.characters[0].isDefeated) {
-            // does nothing, maybe show something on screen? 
+            // return 0 
+            return 0; 
         }
         else {
             // check if a playerCharacter and opponent are NOT selected 
@@ -543,9 +534,9 @@ $(document).ready(function () {
         }
     })
 
-    var resetBtn = $("#resetBtn"); 
+    var resetBtn = $("#resetBtn");
     resetBtn.on("click", function () {
-        location.reload(); 
+        location.reload();
     })
 
 })

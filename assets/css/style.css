@@ -9,6 +9,12 @@ h1 {
     padding: 10px; 
 }
 
+#resetFull {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
 #vsCard {
     background-color:rgba(255,0,0,0);
 }
