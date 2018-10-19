@@ -14,8 +14,6 @@ h1 {
     margin-bottom: 50px; 
 }
 
-
-
 .characterHolder:hover {
     border-style: dashed; 
     border-color: teal; 
@@ -33,6 +31,7 @@ h1 {
 
 .header {
     text-align: center; 
+    margin: 0 auto; 
     
 }
 

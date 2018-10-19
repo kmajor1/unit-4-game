@@ -97,9 +97,10 @@ $(document).ready(function () {
                         // display result of this counter attack 
                         // var playerProgress = (rpgGame.playerCharacter.healthPts.current/rpgGame.playerCharacter.healthPts.base)*100;
                         // $("#playerHealthBar").text(playerProgress);
-                        rpgGame.updateProgress();
+                        
                         // take the current attack value, increase by base value
                         rpgGame.playerCharacter.attackPts.current += rpgGame.playerCharacter.attackPts.base;
+                        rpgGame.updateProgress(); 
                     }
 
                 }
@@ -168,7 +169,8 @@ $(document).ready(function () {
                     darthVaderBox.addClass("characterHolderSelected");
                     darthVaderBox.removeClass("characterHolder");
                     darthVaderBox.find(".card-stats p").text("Player 1");
-                    $(".header h1").text("Select your opponent!");
+                    $("#headerTitle").text("Let's Play:");
+                    $("#headerMsg").text("Select your opponent!");
                     playerLabel.text("Darth Vader");
 
                 }
@@ -179,7 +181,8 @@ $(document).ready(function () {
                     obiWanBox.addClass("characterHolderSelected");
                     obiWanBox.removeClass("characterHolder");
                     obiWanBox.find(".card-stats p").text("Player 1")
-                    $(".header h1").text("Select your opponent!");
+                    $("#headerTitle").text("Let's Play:");
+                    $("#headerMsg").text("Select your opponent!");
                     playerLabel.text("Obi Wan");
                 }
                 else if (charCode == "rey") {
@@ -189,7 +192,8 @@ $(document).ready(function () {
                     reyBox.addClass("characterHolderSelected");
                     reyBox.removeClass("characterHolder");
                     reyBox.find(".card-stats p").text("Player 1");
-                    $(".header h1").text("Select your opponent!");
+                    $("#headerTitle").text("Let's Play:");
+                    $("#headerMsg").text("Select your opponent!");
                     playerLabel.text("Rey");
                 }
                 else if (charCode == "han") {
@@ -199,7 +203,8 @@ $(document).ready(function () {
                     hanSoloBox.addClass("characterHolderSelected");
                     hanSoloBox.removeClass("characterHolder");
                     hanSoloBox.find(".card-stats p").text("Player 1");
-                    $(".header h1").text("Select your opponent!");
+                    $("#headerTitle").text("Let's Play:");
+                    $("#headerMsg").text("Select your opponent!");
                     playerLabel.text("Han Solo");
                 }
                 this.playerCharacter.codeName = this.characters[i].codeName;
@@ -284,7 +289,7 @@ $(document).ready(function () {
                 // hide the attack button 
                 $("#attackBtn").addClass("d-none");
                 // change the header content to reflect loss 
-                $(".header h1").text("The Dark Side has prevailed!");
+                $(".header span").text("The Dark Side has prevailed!");
                 // unhide the reset button 
                 $("#resetBtn").removeClass("d-none");
 
@@ -319,19 +324,22 @@ $(document).ready(function () {
                     // place game in a state where the user can select another opponent 
                     console.log(this);
                     this.isOpponentSelected = false;
-                    // display the characters init box 
-                    $("#charactersInit").removeClass("d-none");
-                    $("#selectedCharactersSpace").addClass("d-none");
-                    // invoke a message to the user that they've defeated the opponent 
-
-                    $(".header h1").text("CHOOSE YOUR NEXT OPPONENT!")
+                    rpgGame.updateProgress();
+                    setTimeout(function() {
+                        $("#charactersInit").removeClass("d-none");
+                        $("#selectedCharactersSpace").addClass("d-none");
+                        // invoke a message to the user that they've defeated the opponent 
+                        
+                        $("#headerTitle").text("GO AGAIN!");
+                        $("#headerMsg").text("Select Another Opponent")
+                    }, 2000)
 
                 }
                 else {
                     // set isGameStarted to false 
                     this.isGameStarted = false;
                     // Change the header to show the game has been won!
-                    $(".header h1").text("You have mastered The Force!");
+                    $(".header span").text("You have mastered The Force!");
                     // hide selected characters space 
                     $("#selectedCharactersSpace").addClass("d-none");
                     // display the character init space for only the player character 
@@ -349,7 +357,7 @@ $(document).ready(function () {
         },
         updateProgress: function () {
             // set attack power values for user to see 
-            $("#opponentAttackPwr").text(rpgGame.opponentCharacter.attackPts);
+            $("#opponentAttackPwr").text(rpgGame.opponentCharacter.counterAttackPts);
             $("#playerAttackPwr").text(rpgGame.playerCharacter.attackPts.current);
             // calculate values for player & opponent health bars 
             var opponentProgress = Math.round((rpgGame.opponentCharacter.healthPts.current / rpgGame.opponentCharacter.healthPts.base) * 100);
@@ -375,7 +383,8 @@ $(document).ready(function () {
 
                 $("#charactersInit").addClass("d-none");
                 $("#selectedCharactersSpace").removeClass("d-none");
-                $(".header h1").text("Battle!");
+                $("#headerTitle").text("Ok...Battle!");
+                $("#headerMsg").text("");
                 rpgGame.updateProgress();
             }
             else {
@@ -398,6 +407,13 @@ $(document).ready(function () {
     console.log(rpgGame);
 
     // load page details 
+
+    // load header message for page load 
+    $("#headerTitle").text("Let's Play!");
+    $("#headerMsg").text("Choose your character!"); 
+    var alertMsg = $(".alert"); 
+    
+
     // load character card stat metric text 
     console.log(rpgGame.characters[0].healthPts);
     // darth vader stats 

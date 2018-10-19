@@ -17,10 +17,16 @@
 
 <body>
     <!-- start of container -->
-    <div class="container my-1">
-        <div class="header my-1">
-            <h1>Let's Play! Choose your character!</h1>
+    <div class="header my-1" style="width: 50%">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong id="headerTitle"></strong> <span id="headerMsg"></span></span>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> -->
         </div>
+    </div>
+    <div class="container my-1">
+        
         <!-- game space -->
         <div id="gameSpace" class="m-0 col-12">
             <!-- all characters for selection placed here -->
@@ -160,6 +166,7 @@
 
                                     <button id="resetBtn" class="btn-warning d-none">Reset</button>
                                 </h2>
+                                
 
                             </div>
                         </div>
